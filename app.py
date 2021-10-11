@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, jsonify, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash, jsonify
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
 from models import Cats, Adopt, db, connect_db, User, Cost
 from forms import NewUserForm, LoginForm, DeleteForm
 from werkzeug.exceptions import Unauthorized
 from breed_list import data_breeds
+import os
 
 app = Flask(__name__)
 
@@ -101,8 +102,8 @@ def logout():
 def show_username(username):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
     
     lbreeds = data_breeds
@@ -118,8 +119,8 @@ def show_username(username):
 def fake_history(username):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username) 
@@ -131,8 +132,8 @@ def fake_history(username):
 def fake_contact(username):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username) 
@@ -146,8 +147,8 @@ def delete_user(username):
     "deletes the user from the database and logs out"
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username)
@@ -205,8 +206,8 @@ def get_data(username):
 def get_breed_info(username, id):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username)
@@ -234,8 +235,8 @@ def delete_cat_main(username, id):
     "deletes cats from the main platform page"
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username)
@@ -268,8 +269,8 @@ def adopt_page(username):
 def adopt_a_cat(username, id):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     cat_name = request.form.get("cat_name")
@@ -297,8 +298,8 @@ def delete_cat_from_adopt(username, id):
     "deletes cats from the adopt page"
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username)
@@ -316,8 +317,8 @@ def delete_cat_from_adopt(username, id):
 def pay_for_adoption(username):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
     
     user = User.query.get(username) 
@@ -337,8 +338,8 @@ def pay_for_adoption(username):
 def clear_all(username):
 
     if "username" not in session or username != session['username']:
-        flash('You need to Login or Signup')
-        return redirect ('/')
+        # flash('You need to Login or Signup')
+        # return redirect ('/')
         raise Unauthorized()
 
     user = User.query.get(username) 
