@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session, flash, jsonify
+from flask import Flask, render_template, request, redirect, session, flash
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
 from models import Cats, Adopt, db, connect_db, User, Cost
@@ -342,7 +342,7 @@ def clear_all(username):
         # return redirect ('/')
         raise Unauthorized()
 
-    user = User.query.get(username) 
+    # user = User.query.get(username) 
     cats = Cats.query.all()
     adopt = Adopt.query.all()
     cost = Cost.query.all()

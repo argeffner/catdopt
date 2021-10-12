@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, BooleanField, IntegerField, TextAreaField, SelectField, PasswordField
-from wtforms.validators import InputRequired, Email, Optional, URL, Length, NumberRange
+from wtforms import StringField, PasswordField
+from wtforms.validators import InputRequired, Email, URL, Length, NumberRange
 
 class NewUserForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired()])
