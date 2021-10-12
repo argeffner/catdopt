@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, flash
 import requests
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from models import Cats, Adopt, db, connect_db, User, Cost
 from forms import NewUserForm, LoginForm, DeleteForm
 from werkzeug.exceptions import Unauthorized
@@ -9,7 +9,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = (os.environ.get('DATABASE_URL', "postgresql:///catdopt"))
+app.config['SQLALCHEMY_DATABASE_URI'] = (os.environ.get('DATABASE_URL', "postgres:///catdopt"))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SECRET_KEY'] = 'meow'
@@ -21,7 +21,6 @@ CAT_KEY = "results"
 IMG_KEY = 'kitty'
 
 connect_db(app)
-db.create_all()
 
 url = "https://api.thecatapi.com/v1/breeds/search"
 headers = {'x-api-key': '82cef8ce-039b-47e9-a74f-f6a7053171cd'}
