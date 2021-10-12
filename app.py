@@ -21,6 +21,7 @@ CAT_KEY = "results"
 IMG_KEY = 'kitty'
 
 connect_db(app)
+db.create_all()
 
 url = "https://api.thecatapi.com/v1/breeds/search"
 headers = {'x-api-key': '82cef8ce-039b-47e9-a74f-f6a7053171cd'}
